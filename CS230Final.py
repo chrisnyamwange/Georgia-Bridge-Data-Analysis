@@ -122,7 +122,7 @@ def plot3(df_filtered):
 def homepage():
     st.title("Georgia Bridges Data Analysis")
     st.text("Navigate the side menu to learn more ! :)")
-    #st.image("your_gif.gif", use_column_width=True)
+    st.image("C:\\Users\\chris\\eclipse-workspace\\CS230FINAL\\FILES\\goku-jumping-goku.gif", use_column_width=True)
 
 def main():
     # Read data
