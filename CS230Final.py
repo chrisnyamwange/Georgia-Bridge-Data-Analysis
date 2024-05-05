@@ -1,3 +1,12 @@
+""" 
+Name: Chris Nyamwange 
+CS230 Section 2 
+Data: Bridges in Georgia 
+Description: This program analyzes the dataset of 10000 bridges in Georgia for 3 things
+                1)The amount of bridges in a specific county with a specific condition
+                2)The number of bridges built within a certain time frame
+                3)The correlation between structure length and average daily traffic
+"""
 import pandas as pd
 import streamlit as st
 import pydeck as pdk
@@ -133,6 +142,9 @@ def main():
     if page == "Home":
         homepage()
     elif page == "Bridge Conditions":
+
+        st.text("Find out the bridge conditions for different counties using the menus below")
+
         # Multiselect for county selection
         countyLst = st.multiselect("Select County(s)", sorted(df["3 - County Name"].unique()))
 
@@ -144,7 +156,12 @@ def main():
 
         # Plot filtered data using plot1
         plot1(filtered_df)
+        st.text("Red = Poor, Yellow = Fair, Green = Good")
+
     elif page == "Bridge Years":
+
+        st.text("Use the boxes to see how many bridges were built between different years")
+       
         # Number input boxes for start year and end year
         startYr = st.number_input("Enter Start Year", min_value=int(df["27 - Year Built"].min()), max_value=int(df["27 - Year Built"].max()))
         endYr = st.number_input("Enter End Year", min_value=int(df["27 - Year Built"].min()), max_value=int(df["27 - Year Built"].max()))
@@ -155,6 +172,9 @@ def main():
         # Plot filtered data using plot2, passing startYr and endYr as arguments
         plot2(filtered_df2, startYr, endYr)
     elif page == "Bridge Length":
+
+        st.text("Use the slider to select a structure length and see the correlated daily traffic")
+
         # Slider for minimum and maximum structure lengths
         minLength, maxLength = st.slider("Select Minimum and Maximum Structure Lengths", min_value=df["49 - Structure Length (ft.)"].min(), max_value=df["49 - Structure Length (ft.)"].max(), value=(df["49 - Structure Length (ft.)"].min(), df["49 - Structure Length (ft.)"].max()))
 
